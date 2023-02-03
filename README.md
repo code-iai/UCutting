@@ -10,9 +10,7 @@ Furthermore is it possible via ROS Message to activate the cutting abitily of a 
 ToDo: Explain:
 - how the message looks like
 - how to activate
-- Dependencies
--                 "ProceduralMeshComponent",
-                "UROSBridge",
-                "UTags",
-                "UConversions"
+- Dependencies:
+    "UROSBridge",
+    "UUtils"
 - Usage
