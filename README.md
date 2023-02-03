@@ -11,4 +11,8 @@ ToDo: Explain:
 - how the message looks like
 - how to activate
 - Dependencies
+-                 "ProceduralMeshComponent",
+                "UROSBridge",
+                "UTags",
+                "UConversions"
 - Usage
