@@ -11,23 +11,25 @@ ACuttable::ACuttable()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 //    USceneComponent* RootSceneComponent= CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
-    StaticMesh= CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-//    static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/StarterContent/Props/SM_Bush.SM_Bush'"))
-    static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube'"));
-    UStaticMesh* Asset = MeshAsset.Object;
-    StaticMesh->SetStaticMesh(Asset);
-    StaticMesh->SetSimulatePhysics(true);
-//    RootComponent=RootSceneComponent;
 
     ProMesh=CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("ProMesh"));
     RootComponent=ProMesh;
-    ProMesh->AttachToComponent(RootComponent,FAttachmentTransformRules::SnapToTargetIncludingScale);
+//    ProMesh->SetupAttachment(RootComponent);
+    //ProMesh->AttachToComponent(RootComponent,FAttachmentTransformRules::KeepRelativeTransform/*FAttachmentTransformRules::SnapToTargetIncludingScale*/);
     ProMesh->SetVisibility(true,true);
     ProMesh->SetSimulatePhysics(true);
     ProMesh->bUseComplexAsSimpleCollision=false;
-    StaticMesh->AttachToComponent(RootComponent,FAttachmentTransformRules::SnapToTargetIncludingScale);
 
 
+    StaticMesh= CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+//    static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/StarterContent/Props/SM_Bush.SM_Bush'"))
+    static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
+    UStaticMesh* Asset = MeshAsset.Object;
+    StaticMesh->SetStaticMesh(Asset);
+//    StaticMesh->SetStaticMesh(Asset);
+    StaticMesh->SetSimulatePhysics(true);
+//    RootComponent=RootSceneComponent;
+    StaticMesh->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -51,5 +53,7 @@ void ACuttable::OnConstruction(const FTransform &Transform)
     if(StaticMesh)
     {
         UKismetProceduralMeshLibrary::CopyProceduralMeshFromStaticMeshComponent(StaticMesh,0,ProMesh,true);
+//        StaticMesh->AttachToComponent(RootComponent,FAttachmentTransformRules::SnapToTargetIncludingScale);
+
     }
 }
