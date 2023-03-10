@@ -19,16 +19,23 @@ Example how to create cutter or cuttables. Then how to interconnect it with ROS
 and then how to activate, deactivate it via ROS Messages or get additional Information about the cuttable.
 ### Cutting
 The easiest way to cut an object it to create a blueprint class of the provided C++.
+
 ![C++ Classes](Documentation/Img/C++-Classes.png)
 ![Create BlueprintClass](Documentation/Img/Create-BlueprintClass.png)
 ![BlueprintClass Overview](Documentation/Img/BlueprintClass-Overview.png)
+
 Afterwards you can customize it to your wishes
+
 ![Custom Cutter](Documentation/Img/Custom-Cutter.png)
+
 Remember to check if the knife is able to cut, and check that the created BlueprintClass is able to generates Overlap Events otherwise the cutting will fail.
+
 ![Can Cut & Generate OverlapEvent needs to be ticked](Documentation/Img/Generate-OverlapEvent.png)
+
 Create a Cuttable the same way, there you do not need to check anything.
 
 Afterwards if the CollisionComponent of the cutter makes Contakt with an cuttable object (and CanCut is true). The cuttable will be cut into two halves
+
 ![Example Cutting](Documentation/Img/ExampleCut1.png)
 ![Example Cutting](Documentation/Img/ExampleCut2.png)
 ![Example Cutting](Documentation/Img/ExampleCut3.png)
